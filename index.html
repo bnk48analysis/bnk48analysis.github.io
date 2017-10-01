@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, width=device-width, height=device-height"/>
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta content="email=no" name="format-detection" />
+		<link rel="stylesheet" href="css/wheel.css" >
+	</head>
+	<body>
+		<div id="tester" style="width:600px;height:250px;"></div>
+	    <div id="select"></div>
+	    <div id="select2"></div>
+
+
+		<script type="text/javascript" src="js/combinatorics.js"></script>
+		<script type="text/javascript" src="js/decimal.min.js"></script>
+		<script type="text/javascript" src="js/plotly.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+		<script>
+			isAll = 0;
+			gOshi = 1;
+			gMin = 1;
+			gMax = 200;
+			gStep = 1;
+			countTrace = 0;
+			function renderGraph(){
+				m = gOshi;
+				dx = 0;
+				countTrace++;
+				x = [];
+				y = [];
+				if(isAll){
+					for(i=gMin;i<=gMax;i+=gStep){
+						x[dx] = i;
+						y[dx] = 0;
+						for(j=0;j<=m;j++){
+							y[dx] += (j%2?-1:1)*Combinatorics.C(m,j)*Math.pow((29-j)/29,i);
+						}
+						y[dx++] *= 100;
+					}
+				}
+				else{
+					for(i=gMin;i<=gMax;i+=gStep){
+						x[dx] = i;
+						y[dx++] = 100-100*Math.pow((29-m)/29, i);
+					}
+				}
+				TESTER = document.getElementById('tester');
+				countTrace > 3 ? Plotly.deleteTraces(TESTER, 0):0;
+				Plotly.plot(TESTER, [{
+				x: x,
+				y: y,
+				name: (m==29?'DD':(m==1?'ตัน':m+' ') + 'โอชิ') + ' (ได้โอชิ' + (isAll?'ครบ':'สักคน') + ')' }], {
+				margin: { t: 0 },
+				xaxis: {range: [0, 200]},
+				yaxis: {range: [0, 120]}} );
+			}
+		</script>
+		<script type="text/javascript" src="js/wheel.js"></script>
+	</body>
+</html>
