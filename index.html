@@ -12,11 +12,12 @@
 	<body>
 		<h1>ให้ Probability ทำนายกัน</h1>
 		<h3>ซื้อเข็มกลัดกี่ชิ้นดี ?</h3>
-		<div id="tester" style="width:100%;height:250px;"></div>
 		<div id="selContainer">
 		    <div id="select"></div>
 		    <div id="select2"></div>
 		</div>
+		<h3>แตะจำนวนชิ้นในกราฟได้เลย!</h3>
+		<div id="tester" style="width:100%;height:250px;"></div>
 
 
 		<script type="text/javascript" src="js/combinatorics.js"></script>
@@ -60,8 +61,8 @@
 				y: y,
 				name: (m==29?'DD':(m==1?'ตัน':m+' ') + 'โอชิ') + ' (ได้โอชิ' + (isAll?'ครบ':'สักคน') + ')' }], {
 				margin: { t: 0 },
-				xaxis: {range: [0, 200], fixedrange: true},
-				yaxis: {range: [0, 120], fixedrange: true}},
+				xaxis: {title: 'ชิ้น', range: [0, 200], fixedrange: true},
+				yaxis: {title: '%', range: [0, 120], fixedrange: true}},
 				{displayModeBar: false} );
 			}
 		</script>
