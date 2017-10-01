@@ -54,7 +54,11 @@ pre {
   border-radius: 4px;
   white-space: pre-wrap;
 }
+h1, h3, #selContainer{
+  text-align: center;
+}
 #select, #select2 {
+  display: inline-block;
   height: 150px;
   width: 120px;
 }
