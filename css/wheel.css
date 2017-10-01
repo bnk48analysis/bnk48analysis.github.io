@@ -62,3 +62,22 @@ h1, h3, #selContainer{
   height: 150px;
   width: 120px;
 }
+.divInline{
+  font-size: 20px;
+  font-family: Microsoft YaHei,helvetica,tahoma,arial;
+  height: 10px;
+  width: 150px;
+  display: inline-block;
+}
+#sideLine{
+  display: inline-block;
+  border: 0.8px solid #cccccc;
+  height: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#divResult{
+  display: block;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}

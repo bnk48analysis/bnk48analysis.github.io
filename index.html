@@ -15,6 +15,12 @@
 		<div id="selContainer">
 		    <div id="select"></div>
 		    <div id="select2"></div>
+		    <div id="sideLine"></div>
+		    <div class="divInline">
+		    	<div id="divResult">
+		    		ซื้อ <input id="inputBadge" type="text" style="width: 3em;"> ชิ้น<br>โอกาส <span id="probResult">-</span>%<br><br>
+		    	</div>
+		    </div>
 		</div>
 		<h3>แตะจำนวนชิ้นในกราฟได้เลย!</h3>
 		<div id="tester" style="width:100%;height:250px;"></div>
@@ -32,6 +38,9 @@
 			gMax = 200;
 			gStep = 1;
 			countTrace = 0;
+			x = [];
+			y = [];
+
 			function renderGraph(){
 				m = gOshi;
 				dx = 0;
@@ -64,7 +73,18 @@
 				xaxis: {title: 'ชิ้น', range: [0, 200], fixedrange: true},
 				yaxis: {title: '%', range: [0, 120], fixedrange: true}},
 				{displayModeBar: false} );
+
+				updateBadge();
 			}
+
+			function updateBadge(){
+				findIdx = x.indexOf(parseInt($('#inputBadge').val()));
+				$('#probResult').html(findIdx==-1?'-':Math.round(y[findIdx] * 100) / 100);
+			}
+
+			$('#inputBadge').change(function(){
+				updateBadge();
+			});
 		</script>
 		<script type="text/javascript" src="js/wheel.js"></script>
 	</body>
