@@ -85,6 +85,10 @@
 			$('#inputBadge').change(function(){
 				updateBadge();
 			});
+
+			window.addEventListener("orientationchange", function() {
+			    window.location = window.location;
+			});
 		</script>
 		<script type="text/javascript" src="js/wheel.js"></script>
 	</body>
